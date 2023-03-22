@@ -14,3 +14,5 @@ Easiest way to try this out:
 
 And now it should ask which browser you want to use, and the Live Server plugin will spin up a local server hosting the folder,
 and a autorefreshing browser session.
+
+Note: it should work with just opening the chat.html, but none of the emotes will work.
