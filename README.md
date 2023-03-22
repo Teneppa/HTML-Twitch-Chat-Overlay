@@ -2,8 +2,7 @@
 
 NOTE: This project is a WIP and it is only for demonstrating purposes!
 
-A very crude demo on how to create a custom chat overlay for Twitch with only HTML, Javascript and CSS.
-
+A very crude demo on how to create a custom chat overlay for Twitch with only HTML, Javascript and CSS. I have very little knowledge on web frontends and it definitely shows in the source code, but feel free to take a look if you are interested in implementing this yourself.
 ![](chat.gif)
 
 Todo:
