@@ -1,0 +1,69 @@
+/* Default text and background for element BODY */
+body{
+    color: #FFFFFF;
+    background-color: #121212;
+    font-family: 'Courier New';
+    padding-left: 20px;
+    padding-top: 32px;
+}
+
+.chatBubble, .chat {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    outline-color: white;
+    outline: solid 2px red;
+
+    padding-left: 16px;
+    padding-right: 16px;
+    
+    margin-top: 20px;
+    box-shadow: 2px 2px 2px 2px #0ff;
+
+    border-radius: 8px;
+
+    display: table;
+
+    text-transform: uppercase;
+}
+
+@keyframes color-change {
+    0% { color: rgb(255, 115, 0); }
+    30% { color: rgb(255, 158, 47); }
+    70% { color: rgb(255, 234, 0); }
+    100% { color: rgb(255, 158, 47); }
+}
+
+.channelEmote, .bttv {
+    height: 80px;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.chatBubble *, .chat * {
+    display:inline-block;
+    vertical-align:middle;
+    padding-top: 0%;
+}
+
+/*
+.chatBubble IMG, .chat IMG {
+    display:inline-block;
+    vertical-align:middle;
+    height: 26px;
+    padding-right: 6px;
+}
+*/
+.badge {
+    display:inline-block;
+    vertical-align:middle;
+    height: 26px;
+    padding-right: 6px;
+}
+
+.username {
+    color: red;
+}
