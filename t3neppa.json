@@ -1,0 +1,368 @@
+
+{
+    "data": [
+      {
+        "emote_set_id": "382658939",
+        "emote_type": "subscriptions",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_cc243a30b3bd492fb6673aeca133c675",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_cc243a30b3bd492fb6673aeca133c675/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_cc243a30b3bd492fb6673aeca133c675/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_cc243a30b3bd492fb6673aeca133c675/static/light/3.0"
+        },
+        "name": "t3neppRoundge",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": "1000"
+      },
+      {
+        "emote_set_id": "433430685",
+        "emote_type": "subscriptions",
+        "format": [
+          "static",
+          "animated"
+        ],
+        "id": "emotesv2_c2bf901200d64ecaa466a49b04e58111",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c2bf901200d64ecaa466a49b04e58111/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c2bf901200d64ecaa466a49b04e58111/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c2bf901200d64ecaa466a49b04e58111/static/light/3.0"
+        },
+        "name": "t3neppAButt",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": "1000"
+      },
+      {
+        "emote_set_id": "e3a419d3-5860-4740-b830-654da27e66fb",
+        "emote_type": "follower",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_fea69e500e2a413c8b375aabdecc5411",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_fea69e500e2a413c8b375aabdecc5411/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_fea69e500e2a413c8b375aabdecc5411/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_fea69e500e2a413c8b375aabdecc5411/static/light/3.0"
+        },
+        "name": "t3neppEvilsmile",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": ""
+      },
+      {
+        "emote_set_id": "382658939",
+        "emote_type": "subscriptions",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_c1cce2e09a36482bbaec2aae9ba29c93",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c1cce2e09a36482bbaec2aae9ba29c93/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c1cce2e09a36482bbaec2aae9ba29c93/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c1cce2e09a36482bbaec2aae9ba29c93/static/light/3.0"
+        },
+        "name": "t3neppHitto",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": "1000"
+      },
+      {
+        "emote_set_id": "1756475836",
+        "emote_type": "bitstier",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_1acf503f4a964e7190d111c37cf55c81",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_1acf503f4a964e7190d111c37cf55c81/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_1acf503f4a964e7190d111c37cf55c81/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_1acf503f4a964e7190d111c37cf55c81/static/light/3.0"
+        },
+        "name": "t3neppGartic",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": ""
+      },
+      {
+        "emote_set_id": "382658939",
+        "emote_type": "subscriptions",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_3e4f0dfb649e4a13935d4bdea23fbdea",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_3e4f0dfb649e4a13935d4bdea23fbdea/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_3e4f0dfb649e4a13935d4bdea23fbdea/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_3e4f0dfb649e4a13935d4bdea23fbdea/static/light/3.0"
+        },
+        "name": "t3neppPuolikuunauru",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": "1000"
+      },
+      {
+        "emote_set_id": "856596293",
+        "emote_type": "bitstier",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_77d7ea17c9f5466996a812c6543b5126",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_77d7ea17c9f5466996a812c6543b5126/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_77d7ea17c9f5466996a812c6543b5126/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_77d7ea17c9f5466996a812c6543b5126/static/light/3.0"
+        },
+        "name": "t3nepp1000BIT",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": ""
+      },
+      {
+        "emote_set_id": "350955941",
+        "emote_type": "subscriptions",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_0f9ee80df490489d9baa7a5a6753ba89",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_0f9ee80df490489d9baa7a5a6753ba89/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_0f9ee80df490489d9baa7a5a6753ba89/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_0f9ee80df490489d9baa7a5a6753ba89/static/light/3.0"
+        },
+        "name": "t3neppCursus",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": "2000"
+      },
+      {
+        "emote_set_id": "e3a419d3-5860-4740-b830-654da27e66fb",
+        "emote_type": "follower",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_3b607900918449c4a826cf116d688582",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_3b607900918449c4a826cf116d688582/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_3b607900918449c4a826cf116d688582/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_3b607900918449c4a826cf116d688582/static/light/3.0"
+        },
+        "name": "t3neppStare",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": ""
+      },
+      {
+        "emote_set_id": "490716180",
+        "emote_type": "subscriptions",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_bbe525e014334a84a243e15ae4a7d3fb",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_bbe525e014334a84a243e15ae4a7d3fb/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_bbe525e014334a84a243e15ae4a7d3fb/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_bbe525e014334a84a243e15ae4a7d3fb/static/light/3.0"
+        },
+        "name": "t3neppHeh",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": "3000"
+      },
+      {
+        "emote_set_id": "382658939",
+        "emote_type": "subscriptions",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_de4202589a9b455396999acf6ae1a07c",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_de4202589a9b455396999acf6ae1a07c/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_de4202589a9b455396999acf6ae1a07c/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_de4202589a9b455396999acf6ae1a07c/static/light/3.0"
+        },
+        "name": "t3neppTuijootus",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": "1000"
+      },
+      {
+        "emote_set_id": "e3a419d3-5860-4740-b830-654da27e66fb",
+        "emote_type": "follower",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_ea1da8f75f9b4989947d742f8db08b64",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_ea1da8f75f9b4989947d742f8db08b64/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_ea1da8f75f9b4989947d742f8db08b64/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_ea1da8f75f9b4989947d742f8db08b64/static/light/3.0"
+        },
+        "name": "t3neppLOVE",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": ""
+      },
+      {
+        "emote_set_id": "e3a419d3-5860-4740-b830-654da27e66fb",
+        "emote_type": "follower",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_6e413e5a1ea34970b75f330144e06ab4",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_6e413e5a1ea34970b75f330144e06ab4/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_6e413e5a1ea34970b75f330144e06ab4/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_6e413e5a1ea34970b75f330144e06ab4/static/light/3.0"
+        },
+        "name": "t3neppSussy",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": ""
+      },
+      {
+        "emote_set_id": "382658939",
+        "emote_type": "subscriptions",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_0d18da41be5a45e6a6696ccb0da9a4f2",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_0d18da41be5a45e6a6696ccb0da9a4f2/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_0d18da41be5a45e6a6696ccb0da9a4f2/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_0d18da41be5a45e6a6696ccb0da9a4f2/static/light/3.0"
+        },
+        "name": "t3neppPOG",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": "1000"
+      },
+      {
+        "emote_set_id": "e3a419d3-5860-4740-b830-654da27e66fb",
+        "emote_type": "follower",
+        "format": [
+          "static"
+        ],
+        "id": "emotesv2_10e5a2edcf124f599fdef9a637b34208",
+        "images": {
+          "url_1x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_10e5a2edcf124f599fdef9a637b34208/static/light/1.0",
+          "url_2x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_10e5a2edcf124f599fdef9a637b34208/static/light/2.0",
+          "url_4x": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_10e5a2edcf124f599fdef9a637b34208/static/light/3.0"
+        },
+        "name": "t3neppRaid",
+        "scale": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "theme_mode": [
+          "light",
+          "dark"
+        ],
+        "tier": ""
+      }
+    ],
+    "template": "https://static-cdn.jtvnw.net/emoticons/v2/{{id}}/{{format}}/{{theme_mode}}/{{scale}}"
+  }
+  
