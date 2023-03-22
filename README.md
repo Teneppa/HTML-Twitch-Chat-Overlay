@@ -7,6 +7,9 @@ Todo:
 * Implement queries for fetching the JSONs containing emote URL's. Probably not possible (at least easily) for Twitch cuz they need authentication for the APIs.
 
 Easiest way to try this out:
+Double click chat.html
+
+And to debug/dev:
 1) Download VSCode
 2) Install Live Server -extension for VSCode
 3) Open the folder with VSCode and open up chat.html
@@ -14,5 +17,3 @@ Easiest way to try this out:
 
 And now it should ask which browser you want to use, and the Live Server plugin will spin up a local server hosting the folder,
 and a autorefreshing browser session.
-
-Note: it should work with just opening the chat.html, but none of the emotes will work.
