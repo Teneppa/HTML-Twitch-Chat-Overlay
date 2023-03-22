@@ -1,0 +1,424 @@
+<!--
+    Built by: https://github.com/Teneppa
+    Use with care, this implementation allows mods & vips to for example show videos on your stream!
+-->
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="twitch.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Source+Code+Pro:wght@600&display=swap');
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+</head>
+
+<body>
+    <div id="chat">
+    </div>
+</pre>
+
+<script>
+    // Change channel here
+    channel = "lordaethelstan"
+
+    // Store emotes
+    bttvJson = [];
+    bttvChannelEmoteNames = [];
+    json = [];
+    channelEmoteNames = [];
+    twitchChannelEmotes = [];
+    twitchEmoteJson = [];
+    twitchGlobalEmotes = [];
+    twitchGlobalEmoteJson = [];
+    bttvGlobalJson = [];
+    bttvGlobalEmoteNames = [];
+
+    // Load emotes
+    loadJson();
+    loadBTTV();
+    loadGlobalJson();
+    loadBTTVGlobal();
+    //load7TV();
+
+    // Create an interval for handling message deletion
+    setInterval(oldMessageHandler, 1000);
+
+    // Find the chat div element (the messages are created there)
+    var chat = document.querySelector("#chat");
+    var lastMessage = new Date();
+
+    // When someone writes in chat, onChat event is triggered
+    /*
+        FLAGS (usage: flags.mod, etc.)
+            "broadcaster": false,
+            "mod": false,
+            "founder": false,
+            "subscriber": false,
+            "vip": false,
+            "highlighted": false,
+            "customReward": false
+
+        User: username
+        Extra: literally everything twitch knows about a user idk why this is here
+    */
+    ComfyJS.onChat = (user, message, flags, self, extra) => {
+            // Create a new chat bubble element.
+            // This will be used to display the message.
+            var chatBubble = document.createElement("div");
+            chatBubble.className = "chatBubble";
+
+            // Bubble color (outline)
+            /*
+            if(flags.broadcaster == true) {
+                chatBubble.style.cssText += `outline: solid 6px red`;
+            }else{
+                chatBubble.style.cssText += `outline: solid 6px ${extra.userState.color}`;
+            }
+            */
+
+            // If the message comes from a subscriber, draw nice box shadow based on the user color
+            if(flags.subscriber == true) {
+                chatBubble.style.cssText += `animation: color-change 1s infinite;`;
+                chatBubble.style.cssText += `box-shadow: 2px 2px 2px 2px ${extra.userState.color};`;
+            }else{
+                chatBubble.style.cssText += `box-shadow: 0px 0px 0px 0px ${extra.userState.color};`;
+            }
+            
+            chatBubble.style.cssText += `outline: none;`;
+
+            /* - - badges - - */
+      
+            // BROADCASTER
+            if(flags.broadcaster == true) {
+                var broadImg = document.createElement("img");
+                broadImg.src = "https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/3";
+                broadImg.className = "badge";
+                chatBubble.append(broadImg);
+            }
+
+            // VIP
+            if(flags.vip == true) {
+                var vipImg = document.createElement("img");
+                vipImg.src = "https://static-cdn.jtvnw.net/badges/v1/b817aba4-fad8-49e2-b88a-7cc744dfa6ec/1";
+                vipImg.className = "badge";
+                chatBubble.append(vipImg);
+            }
+
+            // MODERATOR
+            if(flags.mod == true) {
+                var modImg = document.createElement("img");
+                modImg.src = "https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/1";
+                modImg.className = "badge";
+                chatBubble.append(modImg);
+            }
+
+            // SUBSCRIBER
+            if(flags.subscriber == true) {
+                var subImg = document.createElement("img");
+                subImg.src = "https://static-cdn.jtvnw.net/badges/v1/3ffec10a-762a-4aba-ab97-25b022d20d68/3";
+                subImg.className = "badge";
+                chatBubble.append(subImg);
+            }
+
+            /* This contains the username */
+            var userText = document.createElement("p");
+            userText.innerText = `${user+" "}`;
+            userText.className = "username";
+            if(flags.broadcaster == true) {
+                userText.style.cssText = `color:red;`;
+            }else{
+                userText.style.cssText = `color:${extra.userState.color};`;
+            }
+            chatBubble.append(userText);
+
+            /* Create a container for the message */
+            var userMessage = document.createElement("p");
+
+            // BREAK DOWN USER MESSAGE TO CHECK FOR EMOTES
+            // NOTE: Definitely not a good way to do this.
+            var constructHTML = "";
+            var splitMsg = message.split(" ");
+            console.log(splitMsg.length);
+            for(let i=0; i<splitMsg.length; i++) {
+                if(channelEmoteNames.includes(splitMsg[i])) {
+                    console.log("channel emote detected!");
+                    var imgUrl = getChannelEmoteUrl(splitMsg[i]);
+                    constructHTML += `<img src=${imgUrl} class='channelEmote'></img>`;
+                }else if (twitchGlobalEmotes.includes(splitMsg[i])) {
+                    console.log("GLOBAL EMOTE!");
+                    var imgUrl = getGlobalEmoteUrl(splitMsg[i]);
+                    constructHTML += `<img src=${imgUrl} class='channelEmote'></img>`;
+                }else if (bttvChannelEmoteNames.includes(splitMsg[i])) {
+                    console.log("BTTV DETECTED");
+                    var imgUrl = getBTTVImageUrl(splitMsg[i]);
+                    constructHTML += `<img src=${imgUrl} class='bttv'></img>`;
+                }else if (bttvGlobalEmoteNames.includes(splitMsg[i])) {
+                    console.log("BTTV GLOBAL DETECTED");
+                    var imgUrl = getGlobalBTTVImageUrl(splitMsg[i]);
+                    constructHTML += `<img src=${imgUrl} class='bttv'></img>`;
+                }else{
+                    constructHTML += splitMsg[i];
+                    constructHTML += " ";
+                }
+
+                if (splitMsg.includes("rick roll")) {
+                    constructHTML += `<iframe width="420" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"> </iframe>`;
+                }
+            }
+
+            userMessage.innerHTML = `${"> "+constructHTML}`;
+            /*
+            if(flags.mod == true || flags.vip == true) {
+                //userMessage.innerHTML = `&nbsp;${"> "+message}`;
+                userMessage.innerText = `${"> "+message}`;
+            }else{
+                userMessage.innerText = `${"> "+message}`;
+            }
+            */
+
+            chatBubble.append(userMessage);
+
+            chat.append(chatBubble);
+
+            var childCount = chat.childElementCount;
+            console.log(childCount);
+
+            if(childCount > 8) {
+                chat.removeChild(chat.children[0]);
+            }
+
+            if(childCount < 2) {
+                console.log("reset oldmsg timer");
+                lastMessage = new Date();
+            }
+            
+    }
+
+    // Connect to the Twitch chat
+    ComfyJS.Init(channel);
+
+    // Keep track of old messages so we can delete them
+    function oldMessageHandler() {
+        console.log(new Date() - lastMessage);
+        if(new Date() - lastMessage > 10000) {
+            if(chat.childElementCount > 0) {
+                chat.removeChild(chat.children[0]);
+                lastMessage = new Date();
+            }
+        }
+    }
+
+    /* Channel emotes TWITCH */
+    function loadJson() {
+        fetch('http://127.0.0.1:5500/t3neppa.json')
+        .then(res => res.json())
+        .then(data => {
+            json = data;
+
+            console.log(data);
+            console.log(data.data.length);
+
+            for(let i=0; i<data.data.length; i++) {
+                console.log(data.data[i].name);
+                channelEmoteNames.push(data.data[i].name);
+            }
+        })
+    }
+
+    /* Global twitch emotes */
+    function loadGlobalJson() {
+        fetch('http://127.0.0.1:5500/twitch_global.json')
+        .then(res => res.json())
+        .then(data => {
+            twitchGlobalEmoteJson = data;
+
+            console.log("GLOBAL");
+
+            console.log(data);
+            console.log(data.data.length);
+
+            for(let i=0; i<data.data.length; i++) {
+                twitchGlobalEmotes.push(data.data[i].name);
+            }
+            console.log(twitchGlobalEmotes);
+            console.log("GOBAL END");
+        })
+
+        console.log(channelEmoteNames);
+    }
+
+    // loads channel bttv json
+    function loadBTTV() {
+        fetch('http://127.0.0.1:5500/bttv_t3neppa.json')
+        .then(res => res.json())
+        .then(data => {
+            bttvJson = data;
+
+            console.log(data);
+            console.log(data.channelEmotes.length);
+
+            if(data.channelEmotes.length > 0) {
+                for(let i=0; i<data.channelEmotes.length; i++) {
+                    bttvChannelEmoteNames.push(data.channelEmotes[i].code);
+                }
+            }
+            for(let i=0; i<data.sharedEmotes.length; i++) {
+                bttvChannelEmoteNames.push(data.sharedEmotes[i].code);
+            }
+
+            console.log(bttvChannelEmoteNames);
+        })
+    }
+
+    // Loads global bttv json
+    function loadBTTVGlobal() {
+        fetch('http://127.0.0.1:5500/bttv_global.json')
+        .then(res => res.json())
+        .then(data => {
+            bttvGlobalJson = data;
+
+            console.log("GLOBAL BTTV");
+
+            console.log(data.length);
+
+            if(data.length > 0) {
+                for(let i=0; i<data.length; i++) {
+                    bttvGlobalEmoteNames.push(data[i].code);
+                }
+            }
+
+            console.log(bttvGlobalEmoteNames);
+        })
+    }
+
+    // Loads a 7TV json
+    function load7TV() {
+        fetch('http://127.0.0.1:5500/7tv_anny.json')
+        .then(res => res.json())
+        .then(data => {
+            bttvJson = data;
+
+            console.log(data);
+
+            /*
+            for(let i=0; i<data.channelEmotes.length; i++) {
+                bttvChannelEmoteNames.push(data.channelEmotes[i].code);
+            }
+            for(let i=0; i<data.sharedEmotes.length; i++) {
+                bttvChannelEmoteNames.push(data.sharedEmotes[i].code);
+            }
+            */
+
+            console.log(bttvChannelEmoteNames);
+        })
+    }
+
+    // Channel emote name (string) goes in, a image url comes out
+    function getChannelEmoteUrl(name) {
+        console.log(name);
+        var elen = channelEmoteNames.length;
+
+        var index = 0;
+        if(elen>0) {
+            for(let i=0; i<elen; i++) {
+                if(json.data[i].name == name) {
+                    index = i;
+                    break;
+                }
+            }
+        }
+
+        console.log(json);
+        var url = "";
+        console.log(json.data[index].images.url_4x);
+        var base = json.data[index].images.url_4x;
+
+        // Why da fug is the animated emote named like this ffs
+        //
+        // Static: https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c2bf901200d64ecaa466a49b04e58111/static/light/3.0
+        // Animated: https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c2bf901200d64ecaa466a49b04e58111/animated/light/3.0
+        if(json.data[index].format.includes("animated")) {
+            url = base.substring(0, 20) + base.substring(20, base.length).replace("static", "animated");
+        }else{
+            url = json.data[index].images.url_4x;
+        }
+
+        console.log(url);
+        return url;
+    }
+
+    // Takes a global twitch emote name, spits out an image url
+    function getGlobalEmoteUrl(name) {
+        console.log(name);
+        var elen = twitchGlobalEmotes.length;
+
+        var index = 0;
+        if(elen>0) {
+            for(let i=0; i<elen; i++) {
+                if(twitchGlobalEmoteJson.data[i].name == name) {
+                    index = i;
+                    break;
+                }
+            }
+        }
+
+        console.log(twitchGlobalEmoteJson.data[index].images.url_4x);
+        return twitchGlobalEmoteJson.data[index].images.url_4x;
+    }
+
+    // BTTV channel emotes, for some reason they are divided into channelEmotes and sharedEmotes
+    // for maximal confusion. But usually channelEmotes is empty and everything is in sharedEmotes.
+    function getBTTVImageUrl(name) {
+        console.log(name);
+        var celen = bttvJson.channelEmotes.length;
+        var selen = bttvJson.sharedEmotes.length;
+        
+        var index = 0;
+        if(celen>0) {
+            for(let i=0; i<celen; i++) {
+
+            }
+        }
+        if(selen>0) {
+            for(let i=0; i<selen; i++) {
+                if(bttvJson.sharedEmotes[i].code == name) {
+                    index = i;
+                    break;
+                }
+            }
+        }
+
+        var url = `https://cdn.betterttv.net/emote/${bttvJson.sharedEmotes[index].id}/3x.${bttvJson.sharedEmotes[index].imageType}`;
+        console.log(url);
+        
+        return url;
+    }
+
+    // Takes a global BTTV emote name and spits out the image url
+    function getGlobalBTTVImageUrl(name) {
+        console.log(name);
+        var elen = bttvGlobalJson.length;
+
+        if(elen>0) {
+            for(let i=0; i<elen; i++) {
+                if(bttvGlobalJson[i].code == name) {
+                    index = i;
+                    break;
+                }
+            }
+        }
+
+        // Imagine how useful it would be to store all of the links in one cache instead of having to query every single emote separately
+        // ¯\_(ツ)_/¯
+        var url = `https://cdn.betterttv.net/emote/${bttvGlobalJson[index].id}/3x.${bttvGlobalJson[index].imageType}`;
+        console.log(url);
+        
+        return url;
+    }
+</script>
+
+</body>
+
+</html>
