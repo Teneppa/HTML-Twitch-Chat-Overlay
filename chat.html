@@ -162,10 +162,6 @@
                     constructHTML += splitMsg[i];
                     constructHTML += " ";
                 }
-
-                if (splitMsg.includes("rick roll")) {
-                    constructHTML += `<iframe width="420" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"> </iframe>`;
-                }
             }
 
             userMessage.innerHTML = `${"> "+constructHTML}`;
