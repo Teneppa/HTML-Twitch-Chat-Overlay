@@ -83,8 +83,12 @@
 
             // If the message comes from a subscriber, draw nice box shadow based on the user color
             if(flags.subscriber == true) {
+                if(flags.broadcaster == true) {
+                    chatBubble.style.cssText += `box-shadow: 4px 4px 6px 0px red;`;
+                }else{
+                    chatBubble.style.cssText += `box-shadow: 4px 4px 6px 0px ${extra.userState.color};`;
+                }
                 chatBubble.style.cssText += `animation: color-change 1s infinite;append-animate .3s linear;`;
-                chatBubble.style.cssText += `box-shadow: 4px 4px 4px 0px ${extra.userState.color};`;
             }else{
                 chatBubble.style.cssText += `box-shadow: 0px 0px 0px 0px ${extra.userState.color};`;
             }
@@ -139,26 +143,34 @@
             /* Create a container for the message */
             var userMessage = document.createElement("p");
 
+            var maxMsgLength = 50;
+            //console.log(message.length);
+            if(message.length > maxMsgLength) {
+                //console.log("MSG LEN VIOLATION -> truncate");
+                message = truncate(message, maxMsgLength) + "[🤨]";
+                //console.log(message);
+            }
+
             // BREAK DOWN USER MESSAGE TO CHECK FOR EMOTES
             // NOTE: Definitely not a good way to do this.
             var constructHTML = "";
             var splitMsg = message.split(" ");
-            console.log(splitMsg.length);
+            //console.log(splitMsg.length);
             for(let i=0; i<splitMsg.length; i++) {
                 if(channelEmoteNames.includes(splitMsg[i])) {
-                    console.log("channel emote detected!");
+                    //console.log("channel emote detected!");
                     var imgUrl = getChannelEmoteUrl(splitMsg[i]);
                     constructHTML += `<img src=${imgUrl} class='channelEmote'></img>`;
                 }else if (twitchGlobalEmotes.includes(splitMsg[i])) {
-                    console.log("GLOBAL EMOTE!");
+                    //console.log("GLOBAL EMOTE!");
                     var imgUrl = getGlobalEmoteUrl(splitMsg[i]);
                     constructHTML += `<img src=${imgUrl} class='channelEmote'></img>`;
                 }else if (bttvChannelEmoteNames.includes(splitMsg[i])) {
-                    console.log("BTTV DETECTED");
+                    //console.log("BTTV DETECTED");
                     var imgUrl = getBTTVImageUrl(splitMsg[i]);
                     constructHTML += `<img src=${imgUrl} class='bttv'></img>`;
                 }else if (bttvGlobalEmoteNames.includes(splitMsg[i])) {
-                    console.log("BTTV GLOBAL DETECTED");
+                    //console.log("BTTV GLOBAL DETECTED");
                     var imgUrl = getGlobalBTTVImageUrl(splitMsg[i]);
                     constructHTML += `<img src=${imgUrl} class='bttv'></img>`;
                 }else{
@@ -182,14 +194,14 @@
             chat.append(chatBubble);
 
             var childCount = chat.childElementCount;
-            console.log(childCount);
+            //console.log(childCount);
 
             if(childCount > 8) {
                 chat.removeChild(chat.children[0]);
             }
 
             if(childCount < 2) {
-                console.log("reset oldmsg timer");
+                //console.log("reset oldmsg timer");
                 lastMessage = new Date();
             }
             
@@ -209,24 +221,28 @@
         }
         if(new Date() - lastMessage > delMessageMS-200) {
             if(chat.childElementCount > 0) {
-                console.log("initiating reduceWidth");
+                //console.log("initiating reduceWidth");
                 chat.children[0].style.cssText += "animation: remove-animate forwards 0.2s ease-out 1;";
             }
         }
     }
 
+    function truncate(str, n){
+        return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
+    };
+
     /* Channel emotes TWITCH */
-    function loadJson() {
-        fetch('http://127.0.0.1:5500/t3neppa.json')
+    function loadJson(channel) {
+        fetch(`http://127.0.0.1:5500/t3neppa.json`)
         .then(res => res.json())
         .then(data => {
             json = data;
 
-            console.log(data);
-            console.log(data.data.length);
+            //console.log(data);
+            //console.log(data.data.length);
 
             for(let i=0; i<data.data.length; i++) {
-                console.log(data.data[i].name);
+                //console.log(data.data[i].name);
                 channelEmoteNames.push(data.data[i].name);
             }
         })
@@ -239,19 +255,19 @@
         .then(data => {
             twitchGlobalEmoteJson = data;
 
-            console.log("GLOBAL");
+            //console.log("GLOBAL");
 
-            console.log(data);
-            console.log(data.data.length);
+            //console.log(data);
+            //console.log(data.data.length);
 
             for(let i=0; i<data.data.length; i++) {
                 twitchGlobalEmotes.push(data.data[i].name);
             }
-            console.log(twitchGlobalEmotes);
-            console.log("GOBAL END");
+            //console.log(twitchGlobalEmotes);
+            //console.log("GOBAL END");
         })
 
-        console.log(channelEmoteNames);
+        //console.log(channelEmoteNames);
     }
 
     // loads channel bttv json
@@ -261,8 +277,8 @@
         .then(data => {
             bttvJson = data;
 
-            console.log(data);
-            console.log(data.channelEmotes.length);
+            //console.log(data);
+            //console.log(data.channelEmotes.length);
 
             if(data.channelEmotes.length > 0) {
                 for(let i=0; i<data.channelEmotes.length; i++) {
@@ -273,7 +289,7 @@
                 bttvChannelEmoteNames.push(data.sharedEmotes[i].code);
             }
 
-            console.log(bttvChannelEmoteNames);
+            //console.log(bttvChannelEmoteNames);
         })
     }
 
@@ -284,9 +300,9 @@
         .then(data => {
             bttvGlobalJson = data;
 
-            console.log("GLOBAL BTTV");
+            //console.log("GLOBAL BTTV");
 
-            console.log(data.length);
+            //console.log(data.length);
 
             if(data.length > 0) {
                 for(let i=0; i<data.length; i++) {
@@ -294,7 +310,7 @@
                 }
             }
 
-            console.log(bttvGlobalEmoteNames);
+            //console.log(bttvGlobalEmoteNames);
         })
     }
 
