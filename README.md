@@ -15,7 +15,15 @@ Todo:
 Easiest way to try this out:
 Double click `chat.html`
 
-And to debug/dev:
+How to get Twitch channel emotes:
+1) [Get Twitch CLI](https://dev.twitch.tv/docs/cli/) (for windos scoop was pretty nice)
+2) After getting the credentials, run
+```twitch api get users -q login=channelNameHere```
+3) Take the id from the previous request
+4) Run ```twitch api get chat emotes -q broadcaster_id=idNumberGoesHere > temp.json```
+5) For some reason, in windows the piped files are encoded in Windows-1252 and the files will not load as is. To fix this just open the ```temp.json``` and copy it to a new ```channelName.json``` file.
+
+To debug/dev:
 1) Download VSCode
 2) Install Live Server -extension for VSCode
 3) Open the folder with VSCode and open up chat.html
