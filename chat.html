@@ -23,6 +23,9 @@
     // Change channel here
     channel = "t3neppa"
 
+    // Time for messages to be removed
+    delMessageMS = 10000
+
     // Store emotes
     bttvJson = [];
     bttvChannelEmoteNames = [];
@@ -43,7 +46,7 @@
     //load7TV();
 
     // Create an interval for handling message deletion
-    setInterval(oldMessageHandler, 1000);
+    setInterval(oldMessageHandler, 100);
 
     // Find the chat div element (the messages are created there)
     var chat = document.querySelector("#chat");
@@ -80,8 +83,8 @@
 
             // If the message comes from a subscriber, draw nice box shadow based on the user color
             if(flags.subscriber == true) {
-                chatBubble.style.cssText += `animation: color-change 1s infinite;`;
-                chatBubble.style.cssText += `box-shadow: 2px 2px 2px 2px ${extra.userState.color};`;
+                chatBubble.style.cssText += `animation: color-change 1s infinite;append-animate .3s linear;`;
+                chatBubble.style.cssText += `box-shadow: 4px 4px 4px 0px ${extra.userState.color};`;
             }else{
                 chatBubble.style.cssText += `box-shadow: 0px 0px 0px 0px ${extra.userState.color};`;
             }
@@ -197,11 +200,17 @@
 
     // Keep track of old messages so we can delete them
     function oldMessageHandler() {
-        console.log(new Date() - lastMessage);
-        if(new Date() - lastMessage > 10000) {
+        //console.log(new Date() - lastMessage);
+        if(new Date() - lastMessage > delMessageMS) {
             if(chat.childElementCount > 0) {
                 chat.removeChild(chat.children[0]);
                 lastMessage = new Date();
+            }
+        }
+        if(new Date() - lastMessage > delMessageMS-200) {
+            if(chat.childElementCount > 0) {
+                console.log("initiating reduceWidth");
+                chat.children[0].style.cssText += "animation: remove-animate forwards 0.2s ease-out 1;";
             }
         }
     }
@@ -371,23 +380,40 @@
         var celen = bttvJson.channelEmotes.length;
         var selen = bttvJson.sharedEmotes.length;
         
-        var index = 0;
+        var index = -1;
+        var channelEmote = false;
         if(celen>0) {
             for(let i=0; i<celen; i++) {
-
+                if(bttvJson.channelEmotes[i].code === name) {
+                    console.log("------ MATCH (celen) -------");
+                    console.log(`${bttvJson.channelEmotes[i].code} === ${name}`);
+                    index = i;
+                    channelEmote = true;
+                    break;
+                }
             }
         }
         if(selen>0) {
             for(let i=0; i<selen; i++) {
-                if(bttvJson.sharedEmotes[i].code == name) {
+                if(bttvJson.sharedEmotes[i].code === name) {
+                    console.log("------ MATCH -------");
                     index = i;
                     break;
                 }
             }
         }
 
-        var url = `https://cdn.betterttv.net/emote/${bttvJson.sharedEmotes[index].id}/3x.${bttvJson.sharedEmotes[index].imageType}`;
-        console.log(url);
+        if(channelEmote) {
+            console.log(bttvJson.channelEmotes[index].code);
+
+            var url = `https://cdn.betterttv.net/emote/${bttvJson.channelEmotes[index].id}/3x.${bttvJson.channelEmotes[index].imageType}`;
+            console.log(url);
+        }else{
+            console.log(bttvJson.sharedEmotes[index].code);
+
+            var url = `https://cdn.betterttv.net/emote/${bttvJson.sharedEmotes[index].id}/3x.${bttvJson.sharedEmotes[index].imageType}`;
+            console.log(url);
+        }
         
         return url;
     }

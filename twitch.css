@@ -1,5 +1,5 @@
 /* Default text and background for element BODY */
-body{
+body {
     color: #FFFFFF;
     background-color: #121212;
     font-family: 'Courier New';
@@ -7,19 +7,53 @@ body{
     padding-top: 32px;
 }
 
-.chatBubble, .chat {
+/* https://usefulangle.com/post/377/css-animation-on-dom-insert */
+@keyframes append-animate {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes remove-animate {
+    from {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+.chatBubble,
+.chat {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+
     font-family: 'Source Code Pro', monospace;
     font-weight: 900;
     text-transform: uppercase;
+    font-size: 120%;
+
+    transform-origin: 50% 0;
+    animation: append-animate .3s ease;
 
     color: white;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.95);
     outline-color: white;
     outline: solid 2px red;
 
     padding-left: 16px;
     padding-right: 16px;
-    
+
+    max-width: 25%;
+
     margin-top: 20px;
     box-shadow: 2px 2px 2px 2px #0ff;
 
@@ -31,21 +65,34 @@ body{
 }
 
 @keyframes color-change {
-    0% { color: rgb(255, 115, 0); }
-    30% { color: rgb(255, 158, 47); }
-    70% { color: rgb(255, 234, 0); }
-    100% { color: rgb(255, 158, 47); }
+    0% {
+        color: rgb(255, 115, 0);
+    }
+
+    30% {
+        color: rgb(255, 158, 47);
+    }
+
+    70% {
+        color: rgb(255, 234, 0);
+    }
+
+    100% {
+        color: rgb(255, 158, 47);
+    }
 }
 
-.channelEmote, .bttv {
+.channelEmote,
+.bttv {
     height: 80px;
-    display:inline-block;
-    vertical-align:middle;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.chatBubble *, .chat * {
-    display:inline-block;
-    vertical-align:middle;
+.chatBubble *,
+.chat * {
+    display: inline-block;
+    vertical-align: middle;
     padding-top: 0%;
 }
 
@@ -58,8 +105,8 @@ body{
 }
 */
 .badge {
-    display:inline-block;
-    vertical-align:middle;
+    display: inline-block;
+    vertical-align: middle;
     height: 26px;
     padding-right: 6px;
 }
