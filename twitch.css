@@ -45,7 +45,7 @@ body {
     animation: append-animate .3s ease;
 
     color: white;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.6);
     outline-color: white;
     outline: solid 2px red;
 
@@ -84,7 +84,7 @@ body {
 
 .channelEmote,
 .bttv {
-    height: 80px;
+    height: 40px;
     display: inline-block;
     vertical-align: middle;
 }
